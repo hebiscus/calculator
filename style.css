@@ -53,8 +53,14 @@ body {
 }
 
 #middleSection {
+    width: 600px;
     display: flex;
-    
+}
+
+#bottomSection {
+    width: 600px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 button {
