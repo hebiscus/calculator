@@ -18,6 +18,11 @@ body {
     height: 700px;
     width: 650px;
     background-color: rgb(127, 148, 192);
+    border-radius: 8px;
+    border: 2px solid;
+    border-color: black;
+    box-shadow: 4px 5px rgb(62, 100, 170);
+    
 }
 
 #display {
@@ -28,4 +33,61 @@ body {
     border-radius: 10px;
     border: 2px solid;
     border-color: black;
+}
+
+.functions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 70px;
+    width: 600px;
+    margin-top: 10px;
+}
+
+#clearButton {
+    width: 180px;
+}
+
+#deleteButton {
+    width: 180px;
+}
+
+#middleSection {
+    display: flex;
+    
+}
+
+button {
+    background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button:hover {
+  background-color: #fff;
+}
+
+button:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  button {
+    min-width: 120px;
+    padding: 0 25px;
+  }
 }
