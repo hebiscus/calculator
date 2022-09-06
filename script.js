@@ -29,3 +29,15 @@ function operate(operator, a, b) {
             return divide(a, b);
     }
 }
+
+let displayValue = 0;
+
+document.querySelector(".numbers").addEventListener("click", function () {
+    const display = document.getElementById("display");
+    const button = document.querySelectorAll("button");
+    display.innerText = button.value;
+
+
+});
+
+
