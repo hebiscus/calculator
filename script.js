@@ -32,12 +32,15 @@ function operate(operator, a, b) {
 
 let displayValue = 0;
 
-let buttonList = document.querySelectorAll(".number");
+let numberList = document.querySelectorAll(".number");
   
-buttonList.forEach(function(i){
+numberList.forEach(function(i){
     i.addEventListener("click", function (e) {
      const display = document.getElementById("display");
-     display.innerText = e.target.innerHTML;
-     displayValue = Number(e.target.innerHTML);
+     display.innerText += e.target.innerHTML;
+     displayValue += (e.target.innerHTML);
     })
   })
+
+
+
