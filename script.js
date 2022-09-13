@@ -17,22 +17,24 @@ const divide = function(a, b) {
 function operate(operator, a, b) {
     switch (operator) {
         case add:
-            return add(a, b);
+            display.innerText = add(a, b);
             break;
         case subtract:
-            return subtract(a, b);
+            display.innerText = subtract(a, b);
             break;
         case multiply:
-            return multiply(a, b);
+            display.innerText = multiply(a, b);
             break;
         case divide:
-            return divide(a, b);
+            display.innerText = divide(a, b);
     }
 }
 
-let displayValue = 0;
+let displayValue = "";
 
-let numberList = document.querySelectorAll(".number");
+const display = document.getElementById("display");
+
+const numberList = document.querySelectorAll(".number");
   
 numberList.forEach(function(i){
     i.addEventListener("click", function (e) {
@@ -42,5 +44,31 @@ numberList.forEach(function(i){
     })
   })
 
+const operatorList = document.querySelectorAll(".operator");
+
+operatorList.forEach(function(i) {
+    i.addEventListener("click", function (e) { 
+        let operator = e.target;
+        let a = displayValue;
+        const display = document.getElementById("display");
+        display.innerText = "";
+        displayValue = "";
+    })
+})
+
+let operator = "";
 
 
+const equals = document.querySelector(".equals");
+
+equals.addEventListener("click", function () {
+    let b = displayValue;
+    operate();
+})
+
+const clearButton = document.getElementById("clearButton");
+
+clearButton.addEventListener("click", function () {
+    display.innerText = "";
+    displayValue = "";
+})
