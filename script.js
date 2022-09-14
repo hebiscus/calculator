@@ -16,21 +16,22 @@ const divide = function(a, b) {
 
 function operate(operator, a, b) {
     switch (operator) {
-        case add:
+        case "add":
             display.innerText = add(a, b);
             break;
-        case subtract:
+        case "subtract":
             display.innerText = subtract(a, b);
             break;
-        case multiply:
+        case "multiply":
             display.innerText = multiply(a, b);
             break;
-        case divide:
+        case "divide":
             display.innerText = divide(a, b);
     }
 }
 
-let displayValue = "";
+let displayValue = undefined;
+let a = undefined;
 
 const display = document.getElementById("display");
 
@@ -38,33 +39,36 @@ const numberList = document.querySelectorAll(".number");
   
 numberList.forEach(function(i){
     i.addEventListener("click", function (e) {
-     const display = document.getElementById("display");
      display.innerText += e.target.innerHTML;
-     displayValue += (e.target.innerHTML);
+     displayValue += e.target.innerHTML;
+     a = Number(displayValue);
     })
   })
+
+let operator = undefined;
 
 const operatorList = document.querySelectorAll(".operator");
 
 operatorList.forEach(function(i) {
     i.addEventListener("click", function (e) { 
-        let operator = e.target;
-        let a = displayValue;
-        const display = document.getElementById("display");
+        operator = e.target.value;
         display.innerText = "";
         displayValue = "";
+        
     })
 })
 
-let operator = "";
 
 
 const equals = document.querySelector(".equals");
 
 equals.addEventListener("click", function () {
-    let b = displayValue;
-    operate();
+    let b = Number(displayValue);
+    operate(operator, a, b);
 })
+
+
+
 
 const clearButton = document.getElementById("clearButton");
 
