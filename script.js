@@ -31,6 +31,7 @@ function operate(operator, a, b) {
 }
 
 let displayValue = undefined;
+let operatorClickStatus = undefined;
 let a = undefined;
 let b = undefined;
 
@@ -39,16 +40,16 @@ const display = document.getElementById("display");
 const numberList = document.querySelectorAll(".number");
   
 numberList.forEach(function(i){
-    i.addEventListener("click", function (e) {
-        
+    i.addEventListener("click", function (e) {  
      display.innerText += e.target.innerHTML;
      displayValue = e.target.innerHTML;
-    
-     if (a == undefined) {
-        a = Number(displayValue);
-    } else {
+     
+
+     if (operatorClickStatus == "clicked") {
         b = Number(displayValue);
-    }
+     } else {
+        a = Number(display.innerText);
+     }
 
     })
   })
@@ -59,10 +60,10 @@ const operatorList = document.querySelectorAll(".operator");
 
 operatorList.forEach(function(i) {
     i.addEventListener("click", function (e) { 
+        operatorClickStatus = "clicked";
         operator = e.target.value;
         display.innerText = "";
         displayValue = undefined;
-        
     })
 })
 
@@ -70,6 +71,7 @@ const equals = document.querySelector(".equals");
 
 equals.addEventListener("click", function () {
     operate(operator, a, b);
+    operatorClickStatus = undefined;
 })
 
 
@@ -81,4 +83,12 @@ clearButton.addEventListener("click", function () {
     displayValue = undefined;
     a = undefined;
     b = undefined;
+    operatorClickStatus = undefined;
+})
+
+const deleteButton = document.getElementById("deleteButton");
+
+deleteButton.addEventListener("click", function () { 
+
+
 })
