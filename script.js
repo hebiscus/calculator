@@ -46,7 +46,7 @@ numberList.forEach(function(i){
      
 
      if (operatorClickStatus == "clicked") {
-        b = Number(displayValue);
+        b = Number(display.innerText);
      } else {
         a = Number(display.innerText);
      }
@@ -70,8 +70,17 @@ operatorList.forEach(function(i) {
 const equals = document.querySelector(".equals");
 
 equals.addEventListener("click", function () {
-    operate(operator, a, b);
-    operatorClickStatus = undefined;
+    if (b == 0) {
+        alert("you think you're smart huh");
+        display.innerText = "";
+        displayValue = undefined;
+        a = undefined;
+        b = undefined;
+        operatorClickStatus = undefined;
+    } else {
+        operate(operator, a, b);
+        operatorClickStatus = undefined;
+    }
 })
 
 
