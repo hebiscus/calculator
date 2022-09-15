@@ -60,6 +60,13 @@ const operatorList = document.querySelectorAll(".operator");
 
 operatorList.forEach(function(i) {
     i.addEventListener("click", function (e) { 
+
+        if (a != undefined && b != undefined) {
+            operate(operator, a, b);
+            return;
+        }
+
+
         operatorClickStatus = "clicked";
         operator = e.target.value;
         display.innerText = "";
@@ -77,7 +84,10 @@ equals.addEventListener("click", function () {
         a = undefined;
         b = undefined;
         operatorClickStatus = undefined;
-    } else {
+    } else if (a == undefined && b == undefined) {
+        display.innerText = "give me values!";
+    }
+        else {
         operate(operator, a, b);
         operatorClickStatus = undefined;
     }
@@ -101,3 +111,6 @@ deleteButton.addEventListener("click", function () {
 
 
 })
+
+const decimals = document.querySelector(".decimals");
+decimals.disable = true;
