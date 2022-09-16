@@ -35,6 +35,7 @@ let a = undefined;
 let b = undefined;
 let test = undefined;
 let incrementStatus = undefined;
+let dontClear = undefined;
 
 const display = document.getElementById("display");
 
@@ -46,22 +47,19 @@ numberList.forEach(function(i){
      display.innerText += e.target.innerHTML;
      }
 
-     if (operatorClickStatus == "clicked" && test != undefined) {
-        // display.innerText += e.target.innerHTML;
-        // b = Number(e.target.innerHTML);
-
-        // display.innerText = "";
-        // b = Number(e.target.innerHTML);
-        // display.innerText = Number(b);
+     if (operatorClickStatus == "clicked" && test != undefined && dontClear == undefined) {
         display.innerText = "";
         if (incrementStatus != undefined) {
             b = Number(e.target.innerHTML);
-            display.innerText += Number(b);
+            display.innerText = Number(b);
+            dontClear = "ehe";
         } else {
             b = Number(e.target.innerHTML);
             display.innerText = Number(b);
         }
-        // b = Number(display.innerText);
+     } else if (operatorClickStatus == "clicked" && test != undefined && dontClear != undefined && incrementStatus != undefined) {
+        b = Number(e.target.innerHTML);
+        display.innerText += Number(b);
      } else if (operatorClickStatus == "clicked") {
         b = Number(display.innerText);
      } else {
@@ -86,6 +84,7 @@ operatorList.forEach(function(i) {
             b = undefined;
             operatorClickStatus = "clicked";
             test = "yup";
+            
             return;
         }
 
@@ -122,6 +121,7 @@ clearButton.addEventListener("click", function () {
     b = undefined;
     operatorClickStatus = undefined;
     test = undefined;
+    incrementStatus = undefined;
 })
 
 const deleteButton = document.getElementById("deleteButton");
