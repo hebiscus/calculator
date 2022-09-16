@@ -34,6 +34,7 @@ let operatorClickStatus = undefined;
 let a = undefined;
 let b = undefined;
 let test = undefined;
+let incrementStatus = undefined;
 
 const display = document.getElementById("display");
 
@@ -47,7 +48,20 @@ numberList.forEach(function(i){
 
      if (operatorClickStatus == "clicked" && test != undefined) {
         // display.innerText += e.target.innerHTML;
-        b = Number(e.target.innerHTML);
+        // b = Number(e.target.innerHTML);
+
+        // display.innerText = "";
+        // b = Number(e.target.innerHTML);
+        // display.innerText = Number(b);
+        display.innerText = "";
+        if (incrementStatus != undefined) {
+            b = Number(e.target.innerHTML);
+            display.innerText += Number(b);
+        } else {
+            b = Number(e.target.innerHTML);
+            display.innerText = Number(b);
+        }
+        // b = Number(display.innerText);
      } else if (operatorClickStatus == "clicked") {
         b = Number(display.innerText);
      } else {
@@ -65,6 +79,7 @@ operatorList.forEach(function(i) {
     i.addEventListener("click", function (e) { 
 
         if (a != undefined && b != undefined) {
+            incrementStatus = "uh";
             operate(operator, a, b);
             operator = e.target.value;
             a = Number(display.innerText);
@@ -99,7 +114,6 @@ equals.addEventListener("click", function () {
 })
 
 
-
 const clearButton = document.getElementById("clearButton");
 
 clearButton.addEventListener("click", function () {
@@ -111,6 +125,8 @@ clearButton.addEventListener("click", function () {
 })
 
 const deleteButton = document.getElementById("deleteButton");
+
+deleteButton.disable = true;
 
 deleteButton.addEventListener("click", function () { 
 
