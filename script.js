@@ -51,15 +51,15 @@ numberList.forEach(function(i){
         display.innerText = "";
         if (incrementStatus != undefined) {
             b = Number(e.target.innerHTML);
-            display.innerText = Number(b);
+            display.innerText += Number(b);
             dontClear = "ehe";
         } else {
-            b = Number(e.target.innerHTML);
-            display.innerText = Number(b);
+            b += e.target.innerHTML;
+            display.innerText += Number(b);
         }
      } else if (operatorClickStatus == "clicked" && test != undefined && dontClear != undefined && incrementStatus != undefined) {
-        b = Number(e.target.innerHTML);
-        display.innerText += Number(b);
+        display.innerText += (e.target.innerHTML);
+        b = Number(display.innerText);
      } else if (operatorClickStatus == "clicked") {
         b = Number(display.innerText);
      } else {
@@ -84,6 +84,7 @@ operatorList.forEach(function(i) {
             b = undefined;
             operatorClickStatus = "clicked";
             test = "yup";
+            dontClear = undefined;
             
             return;
         }
@@ -97,8 +98,8 @@ operatorList.forEach(function(i) {
 const equals = document.querySelector(".equals");
 
 equals.addEventListener("click", function () {
-    if (b == 0) {
-        alert("you think you're smart huh");
+    if (b == 0 && operator == "divide") {
+        alert("think you're smart huh");
         display.innerText = "";
         a = undefined;
         b = undefined;
@@ -122,6 +123,7 @@ clearButton.addEventListener("click", function () {
     operatorClickStatus = undefined;
     test = undefined;
     incrementStatus = undefined;
+    dontClear = undefined;
 })
 
 const deleteButton = document.getElementById("deleteButton");
