@@ -21,8 +21,7 @@ body {
     width: 650px;
     background-color: rgb(127, 148, 192);
     border-radius: 8px;
-    border: 4px solid;
-    border-color: black;
+    border: 2mm ridge #083183;
     box-shadow: 4px 4px #435989;
     
 }
