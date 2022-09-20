@@ -120,6 +120,7 @@ clearButton.addEventListener("click", function () {
     display.innerText = "";
     a = undefined;
     b = undefined;
+    operator = undefined;
     operatorClickStatus = undefined;
     test = undefined;
     incrementStatus = undefined;
@@ -128,11 +129,21 @@ clearButton.addEventListener("click", function () {
 
 const deleteButton = document.getElementById("deleteButton");
 
-deleteButton.disable = true;
 
 deleteButton.addEventListener("click", function () { 
-
-
+    const displayArray = [];
+    const splitted = (display.innerText).toString().split('');
+    displayArray.push(splitted);
+    splitted.pop();
+    const joinedDisplay = splitted.join("");
+    display.innerText = Number(joinedDisplay);
+    
+    if (a == undefined) {
+        a = Number(display.innerText);
+    } else {
+        b = Number(display.innerText);
+    }
+    
 })
 
 const decimals = document.querySelector(".decimals");
