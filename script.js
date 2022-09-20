@@ -85,6 +85,8 @@ operatorList.forEach(function(i) {
             operatorClickStatus = "clicked";
             test = "yup";
             dontClear = undefined;
+            decimalsClicked = "yes";
+            decimals.disabled = false;
             
             return;
         }
@@ -92,6 +94,7 @@ operatorList.forEach(function(i) {
         operatorClickStatus = "clicked";
         operator = e.target.value;
         display.innerText = "";
+        decimals.disabled = false;
     })
 })
 
@@ -104,12 +107,16 @@ equals.addEventListener("click", function () {
         a = undefined;
         b = undefined;
         operatorClickStatus = undefined;
+        decimalsClicked = "yes";
+        decimals.disabled = false;
     } else if (a == undefined && b == undefined) {
         display.innerText = "give me values!";
     }
         else {
         operate(operator, a, b);
         operatorClickStatus = undefined;
+        decimalsClicked = "yes";
+        decimals.disabled = false;
     }
 })
 
@@ -125,10 +132,10 @@ clearButton.addEventListener("click", function () {
     test = undefined;
     incrementStatus = undefined;
     dontClear = undefined;
+    decimalsClicked = undefined;
 })
 
 const deleteButton = document.getElementById("deleteButton");
-
 
 deleteButton.addEventListener("click", function () { 
     const displayArray = [];
@@ -136,6 +143,11 @@ deleteButton.addEventListener("click", function () {
     displayArray.push(splitted);
     splitted.pop();
     const joinedDisplay = splitted.join("");
+
+    if (joinedDisplay == 0) {
+        return;
+    }
+
     display.innerText = Number(joinedDisplay);
     
     if (a == undefined) {
@@ -143,8 +155,20 @@ deleteButton.addEventListener("click", function () {
     } else {
         b = Number(display.innerText);
     }
-    
 })
 
 const decimals = document.querySelector(".decimals");
-decimals.disable = true;
+
+decimals.addEventListener("click", function () {
+    let decimalsClicked = undefined;
+    
+    if (decimalsClicked == undefined) {
+        display.innerText += "."
+        decimals.disabled = true;
+    } else {
+        decimals.disabled = false;
+        display.innerText += ".";
+        decimals.disabled = true;
+        decimalsClicked == undefined;
+    }
+})
